@@ -1,0 +1,1 @@
+A factory optimization calculator for **Satisfactory**, designed to help players plan production lines, balance resource consumption, calculate machine requirements, and build more efficient factories.
