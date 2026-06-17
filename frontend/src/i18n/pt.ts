@@ -1,0 +1,61 @@
+import type { Translations } from "./en";
+
+const pt: Translations = {
+  nav: {
+    home:       "Início",
+    calculator: "Calculadora",
+    settings:   "Configurações",
+  },
+  home: {
+    hero_title:    "Satisfactory Perfect Calc",
+    hero_subtitle: "Planeje sua fábrica. Maximize a eficiência.",
+    hero_cta:      "Abrir Calculadora",
+    feature_tree_title: "Árvore de Dependências",
+    feature_tree_desc:  "Visualize a cadeia de produção completa, do minério bruto à peça final.",
+    feature_machines_title: "Contador de Máquinas",
+    feature_machines_desc:  "Obtenha o número exato de máquinas necessárias em qualquer taxa.",
+    feature_lcm_title: "Escalonamento Ótimo",
+    feature_lcm_desc:  "Use MMC para encontrar a linha de produção mínima com máquinas inteiras.",
+    about_title: "Sobre o projeto",
+    about_desc:  "Desenvolvido para o projeto final da disciplina C116 — INATEL. Marcelo H. O. Pina Vieira — 2026.",
+  },
+  calculator: {
+    title:           "Calculadora de Produção",
+    item_label:      "Item alvo",
+    item_placeholder:"Buscar item…",
+    rate_label:      "Taxa desejada (unidades/min)",
+    scale_label:     "Escalar para máquinas inteiras (MMC)",
+    calc_button:     "Calcular",
+    calculating:     "Calculando…",
+    save_button:     "Salvar produção",
+    save_name_label: "Nome da produção",
+    save_confirm:    "Salvo!",
+    results_title:   "Resultados",
+    machines_title:  "Máquinas necessárias",
+    raw_title:       "Recursos brutos",
+    tree_title:      "Árvore de produção",
+    scale_info:      "Escalonado ×{{n}} para máquinas inteiras",
+    no_recipe:       "Sem receita — este é um recurso bruto.",
+    error_item:      "Selecione um item alvo.",
+    error_rate:      "A taxa deve ser maior que zero.",
+  },
+  settings: {
+    title:          "Configurações",
+    language_label: "Idioma",
+    theme_label:    "Tema",
+    dark:           "Escuro",
+    light:          "Claro",
+    saved_title:    "Produções salvas",
+    no_saved:       "Nenhuma produção salva ainda.",
+    delete:         "Excluir",
+  },
+  common: {
+    min:       "/min",
+    machines:  "máquinas",
+    alternate: "Alternativa",
+    loading:   "Carregando…",
+    error:     "Ocorreu um erro.",
+  },
+};
+
+export default pt;

@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-satisfactory-dark text-slate-100 font-mono antialiased;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-satisfactory-surface rounded-xl border border-satisfactory-border p-5 shadow-lg;
+  }
+
+  .btn-primary {
+    @apply bg-satisfactory-orange hover:bg-satisfactory-orange-lt text-white font-semibold
+           px-5 py-2.5 rounded-lg transition-colors duration-150 disabled:opacity-50
+           disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-satisfactory-elevated hover:bg-satisfactory-border text-slate-200 font-semibold
+           px-5 py-2.5 rounded-lg transition-colors duration-150 border border-satisfactory-border;
+  }
+
+  .input {
+    @apply bg-satisfactory-elevated border border-satisfactory-border rounded-lg px-3 py-2
+           text-slate-100 placeholder-slate-500 focus:outline-none focus:border-satisfactory-orange
+           transition-colors duration-150 w-full;
+  }
+
+  .label {
+    @apply block text-sm text-slate-400 mb-1;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { @apply bg-satisfactory-dark; }
+::-webkit-scrollbar-thumb { @apply bg-satisfactory-border rounded; }
+
+/* Light mode overrides */
+.light body {
+  background-color: #f1f5f9;
+  color: #1e293b;
+}
+.light .card {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+}
+.light .input {
+  background-color: #f8fafc;
+  border-color: #e2e8f0;
+  color: #1e293b;
+}
