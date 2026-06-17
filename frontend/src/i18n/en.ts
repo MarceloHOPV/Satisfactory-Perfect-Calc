@@ -28,6 +28,8 @@ export interface Translations {
     save_button: string;
     save_name_label: string;
     save_confirm: string;
+    update_button: string;
+    update_confirm: string;
     results_title: string;
     machines_title: string;
     raw_title: string;
@@ -86,6 +88,8 @@ const en: Translations = {
     save_button:     "Save production",
     save_name_label: "Production name",
     save_confirm:    "Saved!",
+    update_button:   "Update production",
+    update_confirm:  "Updated!",
     results_title:   "Results",
     machines_title:  "Machines needed",
     raw_title:       "Raw resources",

@@ -30,6 +30,8 @@ const pt: Translations = {
     save_button:     "Salvar produção",
     save_name_label: "Nome da produção",
     save_confirm:    "Salvo!",
+    update_button:   "Atualizar produção",
+    update_confirm:  "Atualizado!",
     results_title:   "Resultados",
     machines_title:  "Máquinas necessárias",
     raw_title:       "Recursos brutos",

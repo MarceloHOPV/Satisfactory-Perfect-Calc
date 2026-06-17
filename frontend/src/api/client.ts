@@ -51,5 +51,10 @@ export const getSavedProductions = () =>
 export const createSavedProduction = (payload: { name: string; description?: string; config: unknown }) =>
   api.post<SavedProduction>("/saved-productions/", payload).then((r) => r.data);
 
+export const updateSavedProduction = (
+  id: number,
+  payload: { name?: string; description?: string; config?: unknown }
+) => api.put<SavedProduction>(`/saved-productions/${id}`, payload).then((r) => r.data);
+
 export const deleteSavedProduction = (id: number) =>
   api.delete(`/saved-productions/${id}`);

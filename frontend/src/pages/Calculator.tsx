@@ -28,6 +28,7 @@ export default function Calculator() {
   // Save production
   const [saveName, setSaveName] = useState("");
   const [saveStatus, setSaveStatus] = useState<"idle" | "saved">("idle");
+  const [loadedProductionId, setLoadedProductionId] = useState<number | null>(null);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -56,6 +57,9 @@ export default function Calculator() {
       if (cfg.target_rate) setRate(String(cfg.target_rate));
       if (cfg.scale_to_integers !== undefined) setScaleIntegers(cfg.scale_to_integers);
       if (cfg.result) setResult(cfg.result);
+
+      setSaveName(sp.name);
+      setLoadedProductionId(sp.id);
     }).catch(() => setError(t.common.error));
   }, []);
 
@@ -103,16 +107,19 @@ export default function Calculator() {
 
   const handleSave = async () => {
     if (!result || !saveName.trim()) return;
-    await api.createSavedProduction({
-      name: saveName.trim(),
-      config: {
-        target_item_id: targetItem?.id,
-        target_item_name: targetItem?.name,
-        target_rate: parseFloat(rate),
-        scale_to_integers: scaleIntegers,
-        result,
-      },
-    });
+    const config = {
+      target_item_id: targetItem?.id,
+      target_item_name: targetItem?.name,
+      target_rate: parseFloat(rate),
+      scale_to_integers: scaleIntegers,
+      result,
+    };
+    if (loadedProductionId) {
+      await api.updateSavedProduction(loadedProductionId, { name: saveName.trim(), config });
+    } else {
+      const created = await api.createSavedProduction({ name: saveName.trim(), config });
+      setLoadedProductionId(created.id);
+    }
     setSaveStatus("saved");
     setTimeout(() => setSaveStatus("idle"), 2000);
   };
@@ -249,7 +256,9 @@ export default function Calculator() {
 
           {/* Save production */}
           <div className="card">
-            <h2 className="text-lg font-semibold text-white mb-4">{t.calculator.save_button}</h2>
+            <h2 className="text-lg font-semibold text-white mb-4">
+              {loadedProductionId ? t.calculator.update_button : t.calculator.save_button}
+            </h2>
             <div className="flex gap-3">
               <input
                 className="input"
@@ -261,7 +270,11 @@ export default function Calculator() {
                 onClick={handleSave}
                 className={`btn-secondary shrink-0 ${saveStatus === "saved" ? "text-green-400" : ""}`}
               >
-                {saveStatus === "saved" ? `✓ ${t.calculator.save_confirm}` : t.calculator.save_button}
+                {saveStatus === "saved"
+                  ? `✓ ${loadedProductionId ? t.calculator.update_confirm : t.calculator.save_confirm}`
+                  : loadedProductionId
+                  ? t.calculator.update_button
+                  : t.calculator.save_button}
               </button>
             </div>
           </div>
